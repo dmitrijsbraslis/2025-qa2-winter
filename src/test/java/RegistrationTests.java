@@ -1,13 +1,9 @@
-import org.junit.jupiter.api.Assertions;
+import model.PageObjectUser;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import pages.BaseFunc;
-
-import java.util.List;
+import pages.HomePage;
+import pages.SignInPage;
 
 public class RegistrationTests {
     private final By ACCEPT_COOKIES_BTN = By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
@@ -26,10 +22,45 @@ public class RegistrationTests {
     private final String PASSWORD_COMPLEXITY_ERROR = "parolei jāsatur vismaz viens skaitlis, mazā burti, lielā burti un īpašais simbols";
     private final String PASSWORD_MATCH_ERROR = "nesakrīt ar apstiprinājumu";
 
+//    private PageObjectUser user = new PageObjectUser("FirstName", "Tester",
+//            "tester@tester.lv", "qwerty12345!");
+
     @Test
     public void passwordInconsistencyTestOnPageObjects() {
         BaseFunc baseFunc = new BaseFunc();
-        baseFunc.openHomePage();
+        baseFunc.openHomePage()
+                .acceptCookies()
+                .openLoginPage()
+                .openRegistrationPage()
+                .registerUser(new PageObjectUser(true), true);
+
+//        --------------ALTERNATIVE--------------------------------
+//        BaseFunc baseFunc = new BaseFunc();
+//        baseFunc.openHomePage()
+//                .acceptCookies()
+//                .openLoginPage()
+//                .openRegistrationPage()
+//                .typeFirstName("FirstName")
+//                .typeLastName("Tester")
+//                .typeEmail("tester@tester.lv")
+//                .typePassword("qwerty12345!")
+//                .confirmPassword("qwerty12345")
+//                .scrollToRegistrationBtn()
+//                .applyForMarketingEmails()
+//                .applyForNews()
+//                .pressRegistrationBtn();
+//        ---------------------------------------------------------
+
+//        --------------ALTERNATIVE--------------------------------
+//        baseFunc.openHomePage();
+//
+//        HomePage homePage = new HomePage(baseFunc);
+//        homePage.acceptCookies();
+//        homePage.openLoginPage();
+//
+//        SignInPage signInPage = new SignInPage(baseFunc);
+//        signInPage.openRegistrationPage();
+//        ---------------------------------------------------------
     }
 
 //    @Test
