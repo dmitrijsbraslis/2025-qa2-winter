@@ -17,9 +17,11 @@ public class User {
         System.out.println("New object " + firstName + " created!");
     }
 
+    public User() {}
+
     //---------------GETTERS/SETTERS----------------
     public String getFirstName() {
-        return firstName.toUpperCase();
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -27,7 +29,7 @@ public class User {
     }
 
     public String getLastName() {
-        return lastName.substring(0, 1);
+        return lastName;
     }
 
     public void setLastName(String lastName) {
