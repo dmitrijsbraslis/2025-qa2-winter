@@ -51,6 +51,12 @@ public class CurrentUnits {
     }
 
     public void setIsDay(String isDay) {
-        this.isDay = isDay;
+//        if (isDay.isBlank()) {
+//            this.isDay = null;
+//        } else {
+//            this.isDay = isDay;
+//        }
+
+        this.isDay = isDay.isBlank() ? null : isDay;
     }
 }
