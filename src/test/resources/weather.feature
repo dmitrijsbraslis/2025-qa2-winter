@@ -16,6 +16,8 @@ Feature: Weather forecast
       | timezone_abbreviation | GMT                |
       | elevation             | 38.0               |
 
+    And temperature are received in expected boundaries
+
     And current units are:
       | time           | iso8601 |
       | interval       | seconds |

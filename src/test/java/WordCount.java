@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public class WordCount {
@@ -15,5 +16,12 @@ public class WordCount {
         }
 
         System.out.println(uniqueWords.size());
+    }
+
+    @Test
+    public void someDataTimeManipulations() {
+        LocalDateTime dateTime = LocalDateTime.now();
+        String dataTimeAsString = dateTime.toString();
+        System.out.println(dataTimeAsString);
     }
 }

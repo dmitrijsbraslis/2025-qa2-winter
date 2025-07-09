@@ -1,8 +1,11 @@
 import model.PageObjectUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pages.BaseFunc;
 import pages.HomePage;
+import pages.RegistrationPage;
 import pages.SignInPage;
 
 public class RegistrationTests {
@@ -22,17 +25,24 @@ public class RegistrationTests {
     private final String PASSWORD_COMPLEXITY_ERROR = "parolei jāsatur vismaz viens skaitlis, mazā burti, lielā burti un īpašais simbols";
     private final String PASSWORD_MATCH_ERROR = "nesakrīt ar apstiprinājumu";
 
+    private final Logger LOGGER = LogManager.getLogger(this.getClass());
 //    private PageObjectUser user = new PageObjectUser("FirstName", "Tester",
 //            "tester@tester.lv", "qwerty12345!");
 
     @Test
     public void passwordInconsistencyTestOnPageObjects() {
+        LOGGER.info("This test will check password inconsistency error msg");
         BaseFunc baseFunc = new BaseFunc();
         baseFunc.openHomePage()
                 .acceptCookies()
                 .openLoginPage()
                 .openRegistrationPage()
                 .registerUser(new PageObjectUser(true), true);
+
+        LOGGER.info("Checking error messages");
+        RegistrationPage registrationPage = new RegistrationPage(baseFunc);
+        registrationPage.checkForErrorMsg(PASSWORD_COMPLEXITY_ERROR);
+        registrationPage.checkForErrorMsg(PASSWORD_MATCH_ERROR);
 
 //        --------------ALTERNATIVE--------------------------------
 //        BaseFunc baseFunc = new BaseFunc();

@@ -43,5 +43,17 @@ public class WeatherStepDefs {
         //...
         assertEquals(params.get("is_day"), response.getCurrentUnits().getIsDay(), "Wrong" +
                 "is_day parameter");
+
+    }
+
+    @Then("daily forecast is:")
+    public void check_daily_forecast(Map<String, String> params) {
+        assertNotNull(params.get("temperature"), "The is no temp data");
+        assertFalse(params.get("temperature").isEmpty(), "...");
+        assertTrue(Double.parseDouble(params.get("temperature")) > -40.0, "....");
+        assertTrue(Double.parseDouble(params.get("temperature")) < +40.0, "....");
+
+        int x = 10;
+        String result = String.valueOf(x);
     }
 }
